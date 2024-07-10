@@ -1,0 +1,10 @@
+# Bosch Application Board 3.0 board configuration
+
+# Copyright (c) 2024 Dr. Konstantin Selyunin
+# SPDX-License-Identifier: Apache-2.0
+
+config BOARD_ENABLE_DCDC
+	bool "DCDC mode"
+	select SOC_DCDC_NRF52X
+	default y
+	depends on BOARD_BOSCH_APPLICATION_BOARD_3_0

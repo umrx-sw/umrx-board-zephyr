@@ -36,6 +36,22 @@
 		};
 	};
 
+	power_switches {
+		compatible = "gpio-power-switches";
+		vdd_sel: vdd_sel {
+			gpios = <&gpio0 27 GPIO_ACTIVE_HIGH>;
+			label = "Used with ps_en1 to set the voltage of the VDD P7.1 pin of the ShuttleBoard Connector";
+		};
+		ps_en1: ps_en1 {
+			gpios = <&gpio0 3 GPIO_ACTIVE_HIGH>;
+			label = "Used with vdd_sel to set the voltage of the VDD P7.1 pin of the ShuttleBoard Connector";
+		};
+		ps_en2: ps_en2 {
+			gpios = <&gpio0 28 GPIO_ACTIVE_HIGH>;
+			label = "The line is used to switch ON VDDIO line P7.2 of the ShuttleBoard connector";
+		};
+	};
+
 	buttons {
 		compatible = "gpio-keys";
 		button0: button_0 {
@@ -55,6 +71,9 @@
 		led0 = &led0;
 		led1 = &led1;
 		led2 = &led2;
+		vdd-sel = &vdd_sel;
+		ps-en1 = &ps_en1;
+		ps-en2 = &ps_en2;
 		sw0 = &button0;
 		sw1 = &button1;
 		watchdog0 = &wdt0;
@@ -102,6 +121,23 @@
 	pinctrl-1 = <&spi1_sleep>;
 	pinctrl-names = "default", "sleep";
 };
+
+&qspi {
+	status = "okay";
+	pinctrl-0 = <&qspi_default>;
+	pinctrl-1 = <&qspi_sleep>;
+	pinctrl-names = "default", "sleep";
+	w25m02gwtbig: w25m02gwtbig@0 {
+		compatible = "nordic,qspi-nor";
+		reg = <0>;
+		writeoc = "pp4io";
+		readoc = "read4io";
+		sck-frequency = <8000000>;
+		jedec-id = [ef bb 21];
+		size = <2147483648>;
+	};
+};
+
 
 &ieee802154 {
 	status = "okay";

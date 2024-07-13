@@ -1,0 +1,43 @@
+# Copyright (c) 2024, Dr. Konstantin Selyunin
+# SPDX-License-Identifier: Apache-2.0
+
+description: |
+  This allows you to define a group of power switches. 
+  Each power switch in the group is controlled by a GPIO. 
+  Each power switch is defined in a child node of the power-switches node.
+
+  Here is an example which defines two power switches in the node /power-switches:
+
+  / {
+  	power_switches {
+  		compatible = "gpio-power-switches";
+  		power_switch_1V8 {
+  			gpios = <&gpio0 1 GPIO_ACTIVE_HIGH>;
+  		};
+  		power_switch_3V3 {
+  			gpios = <&gpio0 2 GPIO_ACTIVE_HIGH>;
+  		};
+  	};
+  };
+
+  Above:
+
+  - power_switch_1V8 is pin 1 on gpio0. The 1.8V power is on when the pin is high,
+    and off when the pin is low.
+  - power_switch_3V3 is pin 2 on gpio0. The 3.3V power is on when the pin is high,
+    and off when it is low.
+
+compatible: "gpio-power-switches"
+
+child-binding:
+  description: GPIO power switch child node
+  properties:
+    gpios:
+      type: phandle-array
+      required: true
+    label:
+      type: string
+      description: |
+        Human readable string describing the power switch. It can be used by an
+        application to identify the power switch or to retrieve its number/index
+        (i.e. child node number) on the parent device.

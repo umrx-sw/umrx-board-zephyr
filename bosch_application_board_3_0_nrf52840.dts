@@ -6,7 +6,7 @@
 
 /dts-v1/;
 #include <nordic/nrf52840_qiaa.dtsi>
-#include "bosch_application_board_3_0-pinctrl.dtsi"
+#include "bosch_application_board_3_0_nrf52840-pinctrl.dtsi"
 #include <zephyr/dt-bindings/input/input-event-codes.h>
 
 / {

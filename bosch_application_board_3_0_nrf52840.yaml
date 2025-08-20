@@ -1,5 +1,5 @@
-identifier: bosch_application_board_3_0
-name: Bosch Application Board 3.0
+identifier: bosch_application_board_3_0/nrf52840
+name: Application-Board-3_0-NRF52840
 type: mcu
 arch: arm
 ram: 256

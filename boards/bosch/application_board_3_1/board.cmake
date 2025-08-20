@@ -1,4 +1,4 @@
-# Bosch Application Board 3.1 board configuration
+# Bosch Application Board 3.1 configuration
 
 # Copyright (c) 2025 Dr. Konstantin Selyunin
 # SPDX-License-Identifier: Apache-2.0

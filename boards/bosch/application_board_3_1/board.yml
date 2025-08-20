@@ -1,0 +1,6 @@
+board:
+  name: bosch_application_board_3_1
+  full_name: Application Board 3.1
+  vendor: bosch
+  socs:
+    - name: nrf52840

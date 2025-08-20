@@ -1,0 +1,83 @@
+# Bosch Application Board 3.0 board configuration
+
+# Copyright (c) 2025 Dr. Konstantin Selyunin
+# SPDX-License-Identifier: Apache-2.0
+
+if BOARD_BOSCH_APPLICATION_BOARD_3_0
+
+config BOARD_ENABLE_DCDC
+	bool "DCDC mode"
+	select SOC_DCDC_NRF52X
+	default y
+	depends on BOARD_BOSCH_APPLICATION_BOARD_3_0
+
+config BOARD_SERIAL_BACKEND_CDC_ACM
+	bool "USB CDC"
+	default y
+
+endif # BOARD_BOSCH_APPLICATION_BOARD_3_0
+
+if BOARD_UBX_EVKNINAB3_NRF52840
+
+config BOARD
+	default "ubx_evkninab3_nrf52840"
+
+if BOARD_SERIAL_BACKEND_CDC_ACM
+
+config USB_DEVICE_STACK
+	default y
+
+config USB_CDC_ACM
+	default SERIAL
+
+config CONSOLE
+	default y
+
+config UART_CONSOLE
+	default CONSOLE
+
+config USB_DEVICE_INITIALIZE_AT_BOOT
+	default y if !MCUBOOT && CONSOLE
+
+config SHELL_BACKEND_SERIAL_CHECK_DTR
+	default SHELL
+	depends on UART_LINE_CTRL
+
+config UART_LINE_CTRL
+	default SHELL
+
+config USB_DEVICE_REMOTE_WAKEUP
+	default n
+
+if LOG
+
+# Logger cannot use itself to log
+choice USB_CDC_ACM_LOG_LEVEL_CHOICE
+	default USB_CDC_ACM_LOG_LEVEL_OFF
+endchoice
+
+# Set USB log level to error only
+choice USB_DEVICE_LOG_LEVEL_CHOICE
+	default USB_DEVICE_LOG_LEVEL_ERR
+endchoice
+
+# Wait 4000ms at startup for logging
+config LOG_PROCESS_THREAD_STARTUP_DELAY_MS
+	default 4000
+
+endif # LOG
+
+if USB_DEVICE_STACK
+
+# Enable UART driver, needed for CDC ACM
+config SERIAL
+	default y
+
+endif # USB_DEVICE_STACK
+
+endif # BOARD_SERIAL_BACKEND_CDC_ACM
+
+config BT_CTLR
+	default BT
+
+endif # BOARD_UBX_EVKNINAB3_NRF52840

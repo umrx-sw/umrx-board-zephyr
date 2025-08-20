@@ -1,6 +1,6 @@
-# Bosch Application Board 3.0 board configuration
+# Bosch Application Board 3.0 configuration
 
-# Copyright (c) 2024 Dr. Konstantin Selyunin
+# Copyright (c) 2025 Dr. Konstantin Selyunin
 # SPDX-License-Identifier: Apache-2.0
 
 config BOARD_BOSCH_APPLICATION_BOARD_3_0

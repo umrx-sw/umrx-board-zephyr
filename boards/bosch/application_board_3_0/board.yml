@@ -1,6 +1,6 @@
 board:
   name: bosch_application_board_3_0
   full_name: Application Board 3.0
-  vendor: nordic
+  vendor: bosch
   socs:
     - name: nrf52840

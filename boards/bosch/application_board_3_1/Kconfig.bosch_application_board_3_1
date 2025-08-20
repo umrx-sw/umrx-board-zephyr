@@ -1,0 +1,7 @@
+# Bosch Application Board 3.1 board configuration
+
+# Copyright (c) 2025 Dr. Konstantin Selyunin
+# SPDX-License-Identifier: Apache-2.0
+
+config BOARD_BOSCH_APPLICATION_BOARD_3_1
+	select SOC_NRF52840_QIAA

@@ -1,4 +1,4 @@
-# Zephyr board support for BST Application Board 3.1 / 3.0
+# Zephyr BSP for Application Board 3.1 / 3.0
 
 (**Unofficial**) [Zephyr](https://www.zephyrproject.org/) board support package (BSP) 
  for [Application Board 3.1](https://www.bosch-sensortec.com/software-tools/tools/application-board-3-1/) or 
